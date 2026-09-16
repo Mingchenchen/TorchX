@@ -1,0 +1,19 @@
+{
+  "dialect": "Torchfold",
+  "version": 1,
+  "name": "example_a",
+  "sequences": [
+    {
+      "protein": {
+        "id": "A",
+        "sequence": "ACDEFGHIKLMN",
+        "unpairedMsa": ">query\nACDEFGHIKLMN\n>hit1\nACDEFGHIKLMN\n",
+        "pairedMsa": ">query\nACDEFGHIKLMN\n>hit1\nACDEFGHIKLMN\n",
+        "templates": []
+      }
+    }
+  ],
+  "modelSeeds": [
+    1
+  ]
+}

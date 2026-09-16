@@ -1,0 +1,50 @@
+[build-system]
+requires = [
+    "scikit_build_core",
+    "pybind11",
+    "ninja",
+]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "torchfold"
+version = "3.0.1"
+description = "TorchFold NPU training for AlphaFold3-style structure prediction on Ascend."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+dependencies = [
+    "torch",
+    "einops",
+    "absl-py",
+    "dm-haiku==0.0.13",
+    "dm-tree",
+    "jax==0.4.34",
+    "jaxtyping==0.2.34",
+    "numpy==1.26.4",
+    "rdkit==2024.3.5",
+    "tqdm",
+    "typeguard==2.13.3",
+    "zstandard",
+    "pyyaml",
+    "tensorboard",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=6.0"]
+# Install Ascend torch_npu separately for your CANN/arch; see README.
+# Example (do not pin here): torch_npu==2.6.0
+
+[tool.scikit-build]
+wheel.exclude = [
+    "**.pyx",
+    "**/CMakeLists.txt",
+    "**.cc",
+    "**.h"
+]
+
+[tool.scikit-build.metadata.version]
+provider = "scikit_build_core.metadata.setuptools_scm"
+
+[project.scripts]
+build_data = "torchfold.build_data:build_data"

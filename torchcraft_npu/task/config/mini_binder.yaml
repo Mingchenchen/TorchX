@@ -1,0 +1,28 @@
+# Task Input and Identification
+json_path: "/<path_to_torchcraft_repo>/task/mini_binder/Pdl1.json"
+random_seed: 1 # updated by inputs
+
+# Design Strategy Parameters
+stage_epochs: "0,0,80,5"
+learning_rate_design: 1
+design_length: 75 # updated by inputs
+hotspot_indices: "14,40,45,61,67,119,122,126,147,151,175,176"
+# ground_truth_sequence: "ASDDSAPLK"
+turn_off_diffusion_confidence: False
+cyclic_offset: False #
+aa_type_loss_weight: 5 #
+aa_type_loss_dist_name: "ppiflow_v1" #
+
+# Weight Configuration
+binder_contact_weight: 1.0
+interface_contact_weight: 1.0
+binder_pae_weight: 1
+binder_target_interface_pae_weight: 0
+ptm_weight: 0
+iptm_weight: 0
+pae_weight: 0
+entropy_weight: 0
+pde_weight: 0
+plddt_weight: 0
+paratope_weight: 0 #
+helix_weight: 0 #

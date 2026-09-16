@@ -1,0 +1,196 @@
+# Training Configuration (Online Self-Distillation)
+# ==============================================================
+# Notes:
+#   1. Online Self-Distillation
+#      - Compute cross-chain iPTM for antigen chain during validation
+#      - Predicted structures with iPTM >= threshold are used as pseudo GT for training
+#   2. val_crop switch (control whether validation set is cropped)
+
+# ==================================
+# Data Configuration
+# ==================================
+data:
+  # Replace these placeholders before training.
+  data_dirs:
+    /path/to/data
+
+  output_dir: /path/to/output
+  # Primary: PyTorch checkpoint
+  resume_from: /path/to/checkpoint.pt
+  resume_optimizer: true
+  # Optional: JAX parameter dump (leave commented when using resume_from)
+  # pretrained_model_dir: /path/to/jax_dump
+  max_num_res: 100000
+  val_max_num_res: 530
+
+# ==================================
+# Cropping Configuration
+# ==================================
+cropping:
+  enable_cropping: true
+  crop_size: 256
+  crop_complete_ligand_unstdRes: false
+  spatial_crop_complete_ligand_unstdRes: false
+  drop_last: false
+  remove_metal: false
+  crop_method_weights: [0.4, 0.3, 0.3]
+  interface_minimal_distance: 15
+  max_templates: 4
+  remove_unresolved_tokens: true
+
+# ==================================
+# Model Configuration
+# ==================================
+model:
+  num_recycles: 3
+  num_diffusion_samples: 5
+  diffusion_steps: 200
+  mini_rollout_steps: 0
+  num_diffusion_samples_training: 32
+  condition_embedding_drop_rate: 0.0
+  dot_product_attention: torch
+  antibody_msa: true
+  antibody_msa_drop_prob: 0.0
+  randomize_num_recycles: true
+
+# ==================================
+# Training Configuration
+# ==================================
+training:
+  num_epochs: 3000
+  batch_size: 1
+  learning_rate: 1.0e-4
+  min_lr: 1.0e-6
+  weight_decay: 0.0
+  gradient_clip: 1.0
+  accumulation_steps: 1
+  train_only_confidence: false
+  train_only_diffusion: false
+  no_train_confidence: true
+  use_scheduler: true
+  scheduler_t0: 1000
+  use_amp: true
+  amp_dtype: bf16
+  pkl_name: 
+
+# ==================================
+# Noise Configuration (per data source)
+# ==================================
+noise:
+  enable_per_source_noise: false
+  configs:
+    0:
+      p_mean: -1.2
+      p_std: 1.5
+    1:
+      p_mean: -1.2
+      p_std: 1.5
+    2:
+      p_mean: -1.2
+      p_std: 1.5
+
+# ==================================
+# Interface Loss Weighting
+# ==================================
+interface_loss:
+  enabled: false
+  weight: 2.0
+  distance_threshold: 10.0
+
+# ==================================
+# Layer-wise Learning Rate
+# ==================================
+layer_lr:
+  evoformer: 1.0e-4
+  diffusion_head: 1.0e-4
+
+# ==================================
+# Module Freezing
+# ==================================
+freeze_modules: null
+
+# ==================================
+# Online Self-Distillation
+# ==================================
+# During validation, compute cross-chain iPTM for the antigen chain (last chain).
+# Predicted structure coordinates with iPTM above threshold are added to training set as pseudo ground truth.
+#
+# enabled: Whether to enable online self-distillation
+# iptm_threshold: Cross-chain iPTM threshold for antigen chain (recommended 0.6-0.8)
+# keep_epochs: Keep distillation data from the last N epochs (old data automatically cleaned)
+# val_crop: Whether to crop validation set (recommended False for self-distillation to obtain full structures)
+online_distillation:
+  enabled: false
+  iptm_threshold: 0.8
+  keep_epochs: 3
+  val_crop: false
+  # ptm
+
+# ==================================
+# Cross-chain Pair Representation Dropout
+# ==================================
+cross_chain_pair_dropout:
+  enabled: false
+  prob: 0.15
+  mode: "zero"
+  noise_scale: 1.0
+  scale_factor: 0.1
+
+# ==================================
+# Gradient Checkpointing Configuration
+# ==================================
+# Gradient safety strategy: template/msa first block/group do not use checkpointing to ensure correct gradients; subsequent blocks still use checkpointing to save memory.
+checkpointing:
+  checkpoint_pairformer: true
+  checkpoint_msa: true
+  msa_group_size: 2
+  pairformer_group_size: 2
+  checkpoint_template: true
+  checkpoint_diffusion: true
+  checkpoint_confidence: true
+
+# ==================================
+# Logging and Saving Configuration
+# ==================================
+logging:
+  log_interval: 10
+  save_interval: 1000
+  eval_interval: 1
+  eval_interval_steps: 1000  # Validate every 1000 steps (takes precedence over eval_interval)
+  epoch_save_interval: 1
+  initial_val_max_batches: 1
+  save_val_structures: true
+  save_val_structures_epoch_interval: 1
+  max_diffusion_steps_to_save: 1
+  max_batches_to_save: null
+  save_structures_interval: 1
+
+# ==================================
+# Distributed Training Configuration
+# ==================================
+distributed:
+  use_length_grouped_sampler: true
+  # Optional enhancement: sample each data source in data.data_dirs by ratio (resampled each epoch)
+  # - true: training sampler first samples by ratio, then does LengthGrouped grouping
+  # - false: fully follow the existing LengthGroupedDistributedSampler behavior
+  enable_source_ratio_sampling: true
+  # Only effective when enable_source_ratio_sampling=true; length must match data_dirs
+  # Semantics: >=1.0 use all; 0~1 sample by ratio; 0.0 do not use this epoch
+  data_source_sampling_ratios: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0] #[0.01, 0.01, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+  num_workers: 4
+
+# ==================================
+# Loss Weights
+# ==================================
+loss_weights:
+  fape_weight: 1.0
+  distogram_weight: 0.3
+  confidence_weight: 0.01
+
+# ==================================
+# Miscellaneous Configuration
+# ==================================
+misc:
+  seed: 42
+  disable_internal_progress: true
+  enable_exception_handling: false

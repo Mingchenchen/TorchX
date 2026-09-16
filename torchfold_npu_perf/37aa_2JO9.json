@@ -1,0 +1,17 @@
+{
+  "dialect": "TorchFold",
+  "version": 3,
+  "name": "37aa_2JO9",
+  "sequences": [
+    {
+      "protein": {
+        "id": "A",
+        "sequence": "MKTAYIAKQRQISFVKSHFSRQDILDLWIYHTQGYGS",
+        "unpairedMsa": "",
+        "pairedMsa": "",
+        "templates": []
+      }
+    }
+  ],
+  "modelSeeds": [1]
+}
