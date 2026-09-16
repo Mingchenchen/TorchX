@@ -135,7 +135,7 @@ Set the path in:
 ```bibtex
 @misc{chen2026torchfold,
   title        = {TorchFold: Distillation of diverse antibody-antigen interfaces improves structure prediction},
-  author       = {Chen, Mingchen},
+  author       = {{TorchFold Team}},
   year         = {2026},
   note         = {Changping Laboratory},
   url          = {https://torchx-cpl.github.io}
@@ -143,7 +143,7 @@ Set the path in:
 
 @misc{chen2026torchcraft,
   title        = {TorchCraft: Hallucination-based all-atom protein design with TorchFold},
-  author       = {Chen, Mingchen},
+  author       = {{TorchCraft Team}},
   year         = {2026},
   note         = {Changping Laboratory},
   url          = {https://torchx-cpl.github.io}
