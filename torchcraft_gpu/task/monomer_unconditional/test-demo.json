@@ -1,0 +1,19 @@
+{
+  "name": "demo",
+  "sequences": [
+    {
+      "protein": {
+        "id": "B",
+        "sequence": "FYPFWQNYMVCGMKRMWAMQKYFPTVPGQFHKKLRMCEEEYEMFLWTEERDGRQLCMTRKGCKYKRAQWFKKYQITCTAHLRTHMTHMNS",
+        "unpairedMsa": "",
+        "pairedMsa": "",
+        "templates": []
+      }
+    }
+  ],
+  "modelSeeds": [
+    1
+  ],
+  "dialect": "TorchFold",
+  "version": 1
+}

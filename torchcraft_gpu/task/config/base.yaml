@@ -1,0 +1,32 @@
+# ==========================================
+# Weights: set exactly one of the following.
+#   model_dir: official AlphaFold 3 parameters directory
+#   checkpoint_path: TorchFold trained checkpoint file (.pt)
+# If both are set, checkpoint_path takes priority. Comment out the unused one.
+# ==========================================
+model_dir: "/path/to/AlphaFold3/parameters"
+# checkpoint_path: "/path/to/torchfold_checkpoint.pt"
+
+# ==========================================
+# shared arges with same values 
+# ==========================================
+run_data_pipeline: False   
+num_diffusion_samples: 1
+num_recycles: 1
+use_gradient_checkpointing: True
+pairformer_checkpoint_interval: 2
+design_initial_sequence: "gumbel_sequence"
+
+
+# ==========================================
+# attention op: "Fusion_Attention" or "torch"
+# ==========================================
+dot_product_attention: "torch"
+
+# ==========================================
+# cuequivariance acceleration (GPU only, requires c_pair % 32 == 0)
+# Default "torch" uses the native PyTorch implementation.
+# Set to "cuequivariance" to enable cueq (requires extra packages, see README).
+# ==========================================
+TRIANGLE_MULTIPLICATIVE: "torch"
+TRIANGLE_ATTENTION: "torch"

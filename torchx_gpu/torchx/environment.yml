@@ -1,0 +1,20 @@
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - setuptools
+  - wheel
+  - yaml
+  # C++ toolchain for: pip install -e .
+  - gcc_linux-64=13
+  - gxx_linux-64=13
+  - cmake>=3.28
+  - zlib
+  - openssl
+  - libstdcxx-ng
+  - pandas
+  - h5py
+  - hmmer

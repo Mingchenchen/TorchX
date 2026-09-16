@@ -1,0 +1,9 @@
+example_run/
+__pycache__/
+*.py[cod]
+*.pkl
+*.pkl.gz
+*.log
+.venv/
+venv/
+.DS_Store

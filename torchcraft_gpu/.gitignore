@@ -1,0 +1,28 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+
+# macOS
+.DS_Store
+
+# Compiled shared objects
+*.so
+
+# IDE / Editor
+.vscode/
+.idea/
+
+# Python virtual environment
+venv/
+.venv/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# Environment files
+.env

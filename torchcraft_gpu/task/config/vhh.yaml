@@ -1,0 +1,38 @@
+# Task Input and Identification
+json_path: "/<path_to_torchcraft_repo>/task/vhh/Vhh_task.json"
+random_seed: 1
+
+# Design Strategy Parameters
+stage_epochs: "0,0,80,5"
+learning_rate_design: 0.1
+hotspot_indices: "190,197,200,205" # Hotspot residue indices
+turn_off_diffusion_confidence: False ##
+
+# VHH Specific Path Constraints (usually passed through command line, default values here)
+# 
+framework_cif_path: "/<path_to_torchcraft_repo>/task/nanobody_design/template_cifs_reid/7eow_nanobody_framework.cif"
+cdr_ranges: "8-8,8-8,9-21" # CDR length range (format: range 1, range 2, range 3)
+side_range: "0-0,0-0" # Design length range for both ends (format: left range, right range)
+aa_type_loss_weight: 0  ##
+aa_type_loss_dist_name: "sabdab"
+use_iglm: True
+iglm_cdr1_weight: 1.5
+iglm_cdr2_weight: 3.5
+iglm_cdr3_weight: 5
+iglm_species: "[HUMAN]"
+iglm_chain: "[HEAVY]"
+
+
+# Weight Configuration
+binder_contact_weight: 0
+interface_contact_weight: 0
+binder_pae_weight: 0
+binder_target_interface_pae_weight: 10
+entropy_weight: 0
+ptm_weight: 0
+iptm_weight: 10
+pde_weight: 0.0
+plddt_weight: 0
+pae_weight: 0
+helix_weight: 0
+paratope_weight: 1.0 ##

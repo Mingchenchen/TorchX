@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "torchfold"
+version = "3.0.1"
+description = "TorchFold GPU training and inference for AlphaFold3-style structure prediction."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+dependencies = [
+    "torch",
+    "numpy",
+    "einops",
+    "biotite",
+    "rdkit",
+    "zstandard",
+    "ml_collections",
+    "wandb",
+    "tqdm",
+    "scipy",
+    "pandas",
+]
+
+[project.optional-dependencies]
+# Optional fused triangle kernels; leave unset to use the default torch path.
+cuequivariance = ["cuequivariance"]
+
+[tool.setuptools]
+include-package-data = true
+package-dir = { "torchfold" = "." }
+packages = [
+    "torchfold",
+    "torchfold.config",
+    "torchfold.configs",
+    "torchfold.data",
+    "torchfold.data.constraint",
+    "torchfold.data.core",
+    "torchfold.data.esm",
+    "torchfold.data.inference",
+    "torchfold.data.msa",
+    "torchfold.data.pipeline",
+    "torchfold.data.template",
+    "torchfold.data.tools",
+    "torchfold.metrics",
+    "torchfold.model",
+    "torchfold.model.constants",
+    "torchfold.model.layer_norm",
+    "torchfold.model.modules",
+    "torchfold.model.triangular",
+    "torchfold.runner",
+    "torchfold.utils",
+    "torchfold.utils.permutation",
+    "torchfold.utils.permutation.chain_permutation",
+    "torchfold.weights",
+]

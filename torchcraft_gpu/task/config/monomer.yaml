@@ -1,0 +1,20 @@
+# Task Input and Identification
+json_path: "/<path_to_torchcraft_repo>/task/monomer_unconditional/test-demo.json"
+random_seed: 1
+
+# Design Strategy Parameters
+stage_epochs: "0,0,80,5"
+learning_rate_design: 1
+design_length: 100
+ground_truth_sequence: "ASDDSAPLK"
+turn_off_diffusion_confidence: False
+
+# Weight Configuration
+pae_weight: 10
+binder_contact_weight: 1.0
+interface_contact_weight: 0.0
+ptm_weight: 0.0
+iptm_weight: 0.0
+pde_weight: 0.0
+plddt_weight: 0.0
+helix_weight: 0

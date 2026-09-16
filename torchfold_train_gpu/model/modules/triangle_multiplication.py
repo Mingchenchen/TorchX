@@ -1,0 +1,1 @@
+from torchfold.model.triangular.triangular import TriangleMultiplication

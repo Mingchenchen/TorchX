@@ -1,0 +1,2 @@
+examples/cif/example_a.cif
+examples/cif/example_b.cif
