@@ -183,4 +183,4 @@ Do **not** reinstall a different NumPy major version for training; keep
 
 ## License
 
-Released under the [MIT license](../LICENSE) at the repository root.
+Released under the [Apache License 2.0](../LICENSE) at the repository root.
