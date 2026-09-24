@@ -4,7 +4,7 @@
 
 <div align="center">
 
-[🌐 Project Page](https://torchx-cpl.github.io) · [📄 TorchFold Paper](https://torchx-cpl.github.io) · [📄 TorchCraft Paper](https://torchx-cpl.github.io)
+[🌐 Project Page](https://torchx-cpl.github.io) · [📄 TorchFold Paper](https://torchx-cpl.github.io) · [📄 TorchCraft Paper](https://arxiv.org/abs/2609.19770)
 
 </div>
 
@@ -15,7 +15,7 @@ TorchX is an open all-atom biomolecular stack with four modules:
 - **TorchCraft** — unified binder design by inverting an all-atom structure predictor
 - **TorchFold Train** — training / fine-tuning
 
-This repository is the **GPU** tree (`main`). Released under the MIT license.
+This repository is the **GPU** tree (`main`). Released under the Apache License 2.0.
 
 [⚡ Web Server](https://torchfold.openi.org.cn/) — We provide a TorchFold web server so you can try inference quickly.
 
@@ -141,15 +141,17 @@ Set the path in:
   url          = {https://torchx-cpl.github.io}
 }
 
-@misc{chen2026torchcraft,
-  title        = {TorchCraft: Hallucination-based all-atom protein design with TorchFold},
-  author       = {{TorchCraft Team}},
-  year         = {2026},
-  note         = {Changping Laboratory},
-  url          = {https://torchx-cpl.github.io}
+@misc{torchcraftteam2026torchcraftunifiedbinderdesign,
+  title         = {TorchCraft: Unified binder design by inverting an all-atom structure predictor},
+  author        = {TorchCraft Team and Yu Liu and Zhouhanyu Shen and Zhengyi Li and Xikun Huang and Jiaqi Liu and Shuxian Gao and Qilin Yu and Xiayan Qin and Yucheng Zhang and Mingchen Chen},
+  year          = {2026},
+  eprint        = {2609.19770},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.AI},
+  url           = {https://arxiv.org/abs/2609.19770}
 }
 ```
 
 ## 📝 License
 
-Released under the [MIT license](LICENSE). Correspondence: [mingchenchen@cpl.ac.cn](mailto:mingchenchen@cpl.ac.cn)
+Released under the [Apache License 2.0](LICENSE). Correspondence: [mingchenchen@cpl.ac.cn](mailto:mingchenchen@cpl.ac.cn)

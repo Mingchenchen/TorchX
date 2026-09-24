@@ -110,4 +110,4 @@ bash scripts/infer/predict_json.sh
 
 ## License
 
-Released under the [MIT license](../LICENSE) at the repository root.
+Released under the [Apache License 2.0](../LICENSE) at the repository root.
