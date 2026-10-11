@@ -8,6 +8,7 @@ __pycache__/
 
 # Compiled shared objects
 *.so
+!src/checkpoint_reentrant_function.cpython-311-x86_64-linux-gnu.so
 
 # IDE / Editor
 .vscode/

@@ -7,11 +7,26 @@
 >
 > After completing those steps, return here for the actual design run.
 
-If you want to use the cueq acceleration operators, you need to additionally install `cuequivariance-torch` and `cuequivariance-ops-torch-cu12` (CUDA 12; use `cuequivariance-ops-torch-cu13` for CUDA 13). Then set `TRIANGLE_MULTIPLICATIVE` and `TRIANGLE_ATTENTION` to `"cuequivariance"` in `task/config/base.yaml`. The default is `"torch"`.
+Recommended runtime: **Linux x86_64 + Python 3.11 + PyTorch 2.8.0 (CUDA 12 / cu128)**.  
+`src/checkpoint_reentrant_function.cpython-311-x86_64-linux-gnu.so` is required for gradient checkpointing and only matches this Python/ABI. After the torchx env is active:
 
 ```shell
-pip install cuequivariance-torch cuequivariance-ops-torch-cu12
+cd src
+python -c "from checkpoint_reentrant_function import CheckpointReentrantFunction; print('ok')"
 ```
+
+#### Optional: cueq acceleration
+
+Default backends in `task/config/base.yaml` are `"torch"` and do not need extra packages.
+
+To enable cuEquivariance triangle kernels, install the pinned CUDA 12 packages **after** torchx is installed. Do not run an unpinned `pip install cuequivariance-torch` — that can replace torch with a CUDA 13 build.
+
+```shell
+pip install -r requirements-cueq.txt
+python -c "import torch; print(torch.__version__)"   # still 2.8.0
+```
+
+Then set `TRIANGLE_MULTIPLICATIVE` and `TRIANGLE_ATTENTION` to `"cuequivariance"` in `task/config/base.yaml`.
 
 
 #### Design

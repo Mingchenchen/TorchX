@@ -1,0 +1,6 @@
+# Optional cuEquivariance triangle kernels (Linux + NVIDIA, CUDA 12 / torch cu128).
+# Install after the torchx environment is ready. Do not let pip upgrade torch.
+cuequivariance==0.10.0
+cuequivariance-torch==0.8.0
+cuequivariance-ops-cu12==0.8.0
+cuequivariance-ops-torch-cu12==0.8.0

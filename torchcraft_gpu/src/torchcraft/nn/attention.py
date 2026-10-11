@@ -60,9 +60,9 @@ class GridSelfAttentionTorch(nn.Module):
                 mask=cu_mask, scale=scale,
             )[0]
         else:
-            weighted_avg = fastnn.dot_product_attention(q, k, v,
-                                                        mask=mask,
-                                                        bias=bias)
+            weighted_avg = dot_product_attention(q, k, v,
+                                                 mask=mask,
+                                                 bias=bias)
 
         weighted_avg = einops.rearrange(weighted_avg, 'b h n d -> b n (h d)')
 
