@@ -102,7 +102,7 @@ The two branches share the same scientific modules. GPU-only extra: optional [cu
    #   torchfold_train_gpu/torchfold-prepare-training-assets/README.md
    ```
 
-Optional GPU acceleration for TorchCraft: install `cuequivariance-torch` and `cuequivariance-ops-torch-cu12`, then set `TRIANGLE_MULTIPLICATIVE` / `TRIANGLE_ATTENTION` to `"cuequivariance"` in `torchcraft_gpu/task/config/base.yaml`. The default is `"torch"`.
+Optional GPU acceleration for TorchCraft: after the torchx env is installed, `pip install -r torchcraft_gpu/requirements-cueq.txt` (pinned CUDA 12 packages; do not use an unpinned `pip install cuequivariance-torch`), then set `TRIANGLE_MULTIPLICATIVE` / `TRIANGLE_ATTENTION` to `"cuequivariance"` in `torchcraft_gpu/task/config/base.yaml`. The default is `"torch"`. See [`torchcraft_gpu/README.md`](torchcraft_gpu/README.md).
 
 ## 💾 Checkpoints
 
