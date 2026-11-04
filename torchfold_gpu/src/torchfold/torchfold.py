@@ -275,6 +275,7 @@ class TorchFold(nn.Module):
             trunk_single_cond=None,
             trunk_pair_cond=None,
             batch=batch,
+            clear_flag=True
         )
 
         target_feat = torch.concatenate([target_feat, enc.token_act], dim=-1)

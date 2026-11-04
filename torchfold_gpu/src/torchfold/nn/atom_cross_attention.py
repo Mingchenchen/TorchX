@@ -315,7 +315,7 @@ class AtomCrossAttEncoder(nn.Module):
 
         ### Start variable part
         if token_atoms_act is None:
-            queries_act = queries_single_cond
+            queries_act = self.queries_single_cond.clone()
         else:
             # Convert token_atoms_act to queries layout and map to per_atom_channels
             # (num_subsets, num_queries, channels)
@@ -337,7 +337,7 @@ class AtomCrossAttEncoder(nn.Module):
             queries_single_cond=self.queries_single_cond,
             keys_single_cond=self.keys_single_cond,
             pair_cond=self.pair_act,
-            clear_flag=False,
+            clear_flag=clear_flag,
         )
 
         queries_act *= self.queries_mask.unsqueeze(-1)
